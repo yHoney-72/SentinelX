@@ -1,0 +1,34 @@
+package com.assignment.Social_Guard_Api.model;
+
+import jakarta.persistence.*;
+import lombok.Data;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Data
+public class Post {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User author;
+@ManyToOne
+@JoinColumn(name= "bot_id")
+private Bot bot;
+    @Column(nullable = false)
+    private String authorType;
+    @Column(nullable = false)
+    private String content;
+
+    private LocalDateTime createdAt;
+
+    @PrePersist
+    public void setTime() {
+        this.createdAt = LocalDateTime.now();
+    }
+}
