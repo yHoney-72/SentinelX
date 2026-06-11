@@ -1,4 +1,4 @@
-# Social Guard API
+# SentinelX
 
 ## Approach
 
